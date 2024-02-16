@@ -1,0 +1,28 @@
+ul {
+    list-style-type: none;
+    margin: 0%;
+    padding: 0%;
+    overflow: hidden;
+}
+table, th, tr {
+    color: black;
+    background-color: aqua;
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+}
+ul {
+    background-color: darkgoldenrod;
+    color: aliceblue;
+    width: 5%;
+}
+li:hover {
+color: black;
+}
+
+table, th, td {  height: 60px; width: 30%;
+    
+}
+a:hover {
+    background-color: yellow;
+}

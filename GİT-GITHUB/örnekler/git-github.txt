@@ -1,0 +1,18 @@
+
+1. github da bir repo oluştur
+
+2. Local e clonla
+
+3. Bir branch oluştur ve branch da dosya oluştur
+
+4. commit oluştur 
+
+5. Yaptığın işlemleri github a gönder
+
+6. yaptığın push işlemi için bir pull request oluştur
+
+7. branch ını sil
+
+8. github da pull requesti kabul et
+
+9. Localde Github reposunun son halini indir

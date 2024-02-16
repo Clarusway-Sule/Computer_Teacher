@@ -1,0 +1,3 @@
+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
+
+ git remote set-url origin https://Clarusway-Sule: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@github.com/Clarusway-Sule/repo_clone_vsc.git

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/sagla/OneDrive/Masaüstü/Computer Teacher/SQL/SQLite/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="browser structure pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="3862"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,6:mainalbums"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="albums" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="63"/><column index="2" value="300"/><column index="3" value="61"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT name, salary FROM carsalesEmployees;
+SELECT name, max(salary), avg(salary), sum(salary), min(salary) FROM carsalesEmployees;
+SELECT name, round(avg(salary),1) as ortalama_maas FROM carsalesEmployees;
+SELECT max(salary)+min(salary) FROM carsalesEmployees;
+
+SELECT count(gender) FROM carsalesEmployees;
+SELECT gender, count(gender) FROM carsalesEmployees GROUP BY gender;
+SELECT gender, max(salary) FROM carsalesEmployees GROUP BY gender;
+SELECT gender, max(salary) FROM carsalesEmployees GROUP BY gender order by salary DESC;
+
+SELECT Name FROM tracks;
+SELECT count(Name) FROM tracks;
+SELECT Name, Composer FROM tracks;
+--Composer de kaç tane Null ifade var
+SELECT count(Composer) FROM tracks WHERE Composer in NULL;
+
+SELECT * FROM albums;
+SELECT DISTINCT AlbumId, MediaTypeId FROM tracks;
+
+SELECT Name, Composer FROM tracks WHERE Composer=&quot;Jimi Hendrix&quot;;
+
+SELECT * FROM invoices WHERE total&gt;=10 order by total DESC limit 4;
+
+SELECT * FROM invoices WHERE NOT BillingCountry=&quot;USA&quot; ORDER BY total ASC;
+SELECT * FROM invoices WHERE BillingCountry&lt;&gt;&quot;USA&quot; ORDER BY total ASC;
+SELECT * FROM invoices WHERE BillingCountry not in(&quot;USA&quot;) ORDER BY total ASC;
+SELECT * FROM invoices WHERE BillingCountry not in(&quot;USA&quot;, &quot;Canada&quot;) ORDER BY total ASC;
+SELECT * FROM invoices WHERE BillingCountry is not &quot;USA&quot; ORDER BY total ASC;
+
+SELECT * FROM invoices WHERE BillingState is NULL;
+SELECT count(*) FROM invoices WHERE BillingState is NULL;
+
+SELECT * FROM invoices WHERE InvoiceDate BETWEEN &quot;2009-01-01&quot; and &quot;2011-01-01&quot; ORDER BY InvoiceDate DESC LIMIT 1;
+SELECT max(InvoiceDate) from invoices WHERE InvoiceDate&lt;&quot;2011-01-01&quot;;
+
+SELECT FirstName, LastName, Country FROM customers WHERE Country IN(&quot;Belgium&quot;, &quot;Norway&quot;, &quot;USA&quot;, &quot;Canada&quot;);
+
+SELECT name, Composer FROM tracks WHERE Composer like(&quot;%Bach&quot;);
+SELECT name, Composer FROM tracks WHERE Composer like &quot;%Bach&quot;;
+
+SELECT count(*) as toplam_fatura_sayisi FROM invoices;
+SELECT count(DISTINCT Composer) as besteci_sayisi FROM tracks ;
+
+--her composer e ait kaç trac var
+SELECT Composer, count(name) FROM tracks GROUP BY Composer;
+SELECT Composer, count(name) FROM tracks WHERE Composer like &quot;%Adrian Smith%&quot; GROUP BY Composer;
+
+SELECT *, min(Milliseconds) FROM tracks;
+SELECT *, max(Milliseconds) FROM tracks;
+SELECT sum(total) FROM invoices;
+
+SELECT avg(Milliseconds) FROM tracks;
+SELECT name, Milliseconds FROM tracks WHERE Milliseconds&gt;393599;
+
+SELECT Composer, name FROM tracks;
+SELECT Country, count(*) FROM customers GROUP BY Country;
+SELECT count(*) FROM customers;
+
+SELECT name, AlbumId, min(Milliseconds) FROM tracks GROUP BY AlbumId;
+
+SELECT AlbumId, Milliseconds FROM tracks GROUP BY AlbumId ORDER by  Milliseconds ASC;
+
+SELECT BillingCountry, sum(total) FROM invoices GROUP BY BillingCountry;
+
+
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

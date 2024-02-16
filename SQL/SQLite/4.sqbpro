@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/sagla/OneDrive/Masaüstü/Computer Teacher/SQL/SQLite/employees.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="browser structure pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="1497"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,17:maincarsalesEmployees"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">SELECT artists.Name, albums.Title FROM artists LEFT JOIN albums ON albums.ArtistId=artists.ArtistId;
+SELECT artists.Name, albums.Title FROM albums LEFT JOIN artists ON albums.ArtistId=artists.ArtistId;
+
+SELECT artists.Name, albums.Title FROM albums JOIN artists ON albums.ArtistId=artists.ArtistId;
+
+/* her müşterinin faturasını görüntüleyelim */
+SELECT customers.FirstName, invoices.Total from customers join invoices on customers.CustomerId=invoices.CustomerId;
+SELECT customers.FirstName, invoices.Total from customers  left join invoices on customers.CustomerId=invoices.CustomerId;
+
+/* tracks Milliseconds ortalama değereinden büyük olanları getir */ 
+
+SELECT avg(Milliseconds) FROM tracks;
+SELECT name, Milliseconds FROM tracks WHERE Milliseconds&gt;(SELECT avg(Milliseconds) FROM tracks);
+
+
+
+
+
+
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

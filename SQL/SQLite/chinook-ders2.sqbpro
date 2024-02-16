@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/sagla/OneDrive/Masaüstü/Computer Teacher/SQL/SQLite/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="browser structure pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="3862"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,8:maininvoices"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="albums" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="63"/><column index="2" value="300"/><column index="3" value="61"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="invoices" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="70"/><column index="2" value="85"/><column index="3" value="129"/><column index="4" value="264"/><column index="5" value="132"/><column index="6" value="82"/><column index="7" value="98"/><column index="8" value="118"/><column index="9" value="42"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tracks" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="58"/><column index="2" value="300"/><column index="3" value="63"/><column index="4" value="92"/><column index="5" value="61"/><column index="6" value="300"/><column index="7" value="86"/><column index="8" value="63"/><column index="9" value="67"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT * FROM carsalesEmployees;
+SELECT DISTINCT dep FROM carsalesEmployees;
+SELECT * FROM carsalesEmployees LIMIT 3;
+SELECT name, salary FROM carsalesEmployees WHERE salary&gt;2500;
+SELECT name, salary, region FROM carsalesEmployees WHERE salary&gt;2500 AND region=&quot;West&quot;;
+SELECT name, salary, region FROM carsalesEmployees WHERE salary&gt;2500 OR region=&quot;West&quot;;
+SELECT name, surname, gender FROM carsalesEmployees WHERE NOT gender=&quot;F&quot;;
+
+SELECT name, salary FROM carsalesEmployees WHERE salary&gt;2400 and salary&lt;3100;
+SELECT name, salary FROM carsalesEmployees WHERE salary BETWEEN 2400 and 3100;
+
+SELECT * FROM carsalesEmployees;
+SELECT id, name, date FROM carsalesEmployees WHERE date=&quot;21.09.2019&quot;;
+
+SELECT name, salary, region, gender FROM carsalesEmployees WHERE salary&gt;2500 AND region=&quot;West&quot; and gender=&quot;F&quot;;
+
+SELECT name, salary, region FROM carsalesEmployees WHERE region IN(&quot;West&quot;, &quot;East&quot;, &quot;Central&quot;);
+SELECT name, salary, region FROM carsalesEmployees WHERE region=&quot;West&quot; OR region=&quot;East&quot; OR region=&quot;Central&quot;;
+SELECT name, salary, region FROM carsalesEmployees WHERE region NOT IN(&quot;West&quot;, &quot;East&quot;);
+
+SELECT name, surname, salary  FROM carsalesEmployees ORDER BY salary ASC;
+SELECT name, surname, salary, region  FROM carsalesEmployees ORDER BY region, salary DESC;
+SELECT name, surname, salary, region  FROM carsalesEmployees ORDER BY salary DESC, region;
+
+SELECT name, surname FROM carsalesEmployees WHERE surname like &quot;W%&quot;;
+SELECT name, surname FROM carsalesEmployees WHERE surname like &quot;%on&quot;;
+SELECT name, surname FROM carsalesEmployees WHERE surname like &quot;C_m%&quot;;
+
+SELECT count(name) FROM carsalesEmployees;
+SELECT count(dep) FROM carsalesEmployees;
+
+SELECT count(name) FROM carsalesEmployees WHERE dep is NULL;
+SELECT count(name) as bos_olanlar FROM carsalesEmployees WHERE dep is NULL;
+SELECT name, dep FROM carsalesEmployees WHERE dep is NULL;
+
+SELECT count(*) as tüm_kayit FROM carsalesEmployees;
+
+SELECT count(DISTINCT region) FROM carsalesEmployees;
+SELECT count(DISTINCT gender) FROM carsalesEmployees;
+SELECT count(DISTINCT dep) FROM carsalesEmployees;
+
+SELECT min(salary) FROM carsalesEmployees;
+SELECT max(salary) as en_yuksek_maas, min(salary) as en_dusuk_maas, sum(salary) as toplam_maas 
+FROM carsalesEmployees;
+
+SELECT avg(salary) FROM carsalesEmployees;
+
+/*virgülden sonra kaç tane rakam istiyorsak*/
+SELECT round(avg(salary),2) FROM carsalesEmployees;
+
+SELECT sum(salary)/count(salary) as toplam_maasın_ortalaması FROM carsalesEmployees;
+
+SELECT max(salary)-min(salary) as max_ile_min_arasındaki_fark FROM carsalesEmployees;
+
+/*herkesin maaşı %15 zamlı olacak */
+SELECT name,surname, salary as eski_maas, salary*1.15 as yeni_maas FROM carsalesEmployees;
+
+/* ort maas max dan ne kadar az ve min ne kadar fazla */
+Select name, salary,  min(salary), max(salary),round(avg(salary)), 
+round(max(salary)-avg(salary)) as en_buyukten_farki, round(avg(salary)-min(salary)) as en_kucukten_farki 
+FROM carsalesEmployees;
+
+Select name, salary, round(max(salary)-avg(salary)) as en_buyukten_farki, round(avg(salary)-min(salary)) as en_kucukten_farki 
+FROM carsalesEmployees;
+
+SELECT * FROM carsalesEmployees;
+SELECT * FROM carsalesEmployees GROUP BY dep;
+SELECT dep, count(*) FROM carsalesEmployees GROUP BY dep;
+
+SELECT gender, dep, count(*) FROM carsalesEmployees GROUP BY gender, dep;
+SELECT gender, dep, count(*) FROM carsalesEmployees WHERE gender=&quot;F&quot; GROUP BY gender, dep;
+
+/*her bölgedeki personel sayısı*/
+SELECT region, count(name) as bölgelerdeki_personel_sayisi FROM carsalesEmployees GROUP BY region;
+
+/*her meslekteki personel sayisi */
+SELECT dep, count(name) as meslekerdeki_personel_sayisi FROM carsalesEmployees GROUP BY dep;
+
+SELECT region, gender, count(*) FROM carsalesEmployees GROUP BY region, gender;
+SELECT gender, region, count(*) FROM carsalesEmployees GROUP BY gender, region;
+
+/* her bölgedeki en yüksek maasli personel */
+SELECT name, region, max(salary) FROM carsalesEmployees GROUP BY region;
+
+SELECT name, region, min(salary) FROM carsalesEmployees GROUP BY region;
+
+SELECT dep, sum(salary) FROM carsalesEmployees GROUP BY dep;
+SELECT dep, avg(salary) FROM carsalesEmployees GROUP BY dep;
+
+
+
+SELECT name FROM tracks;
+
+SELECT name, Composer FROM tracks;
+
+SELECT * FROM albums;
+
+SELECT * FROM tracks;
+SELECT name, Composer FROM tracks;
+
+SELECT name, AlbumId, MediaTypeId FROM tracks;
+SELECT DISTINCT AlbumId, MediaTypeId FROM tracks;
+
+SELECT name FROM tracks WHERE Composer=&quot;Jimi Hendrix&quot;;
+
+SELECT * FROM invoices WHERE total&gt;10;
+SELECT * FROM invoices WHERE total&gt;10 LIMIT 4;
+
+SELECT * FROM invoices WHERE total&gt;10 ORDER BY total DESC;
+
+SELECT * FROM invoices WHERE BillingCountry not in (&quot;USA&quot;) ORDER by total;
+
+SELECT * FROM invoices WHERE BillingCountry&lt;&gt;&quot;USA&quot; AND total&gt;10 ORDER BY total;
+
+SELECT * FROM invoices WHERE InvoiceDate BETWEEN &quot;2009-01-01&quot; AND &quot;2011-01-01&quot; ORDER By InvoiceDate DESC LIMIT 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/sagla/OneDrive/Masaüstü/Computer Teacher/SQL/SQLite/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="browser structure pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="3862"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,14:mainvacation_plan2"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="albums" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="63"/><column index="2" value="300"/><column index="3" value="61"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="deneme" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="42"/><column index="2" value="45"/><column index="3" value="66"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="employees" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="84"/><column index="2" value="73"/><column index="3" value="73"/><column index="4" value="124"/><column index="5" value="77"/><column index="6" value="129"/><column index="7" value="129"/><column index="8" value="178"/><column index="9" value="67"/><column index="10" value="46"/><column index="11" value="62"/><column index="12" value="82"/><column index="13" value="115"/><column index="14" value="115"/><column index="15" value="168"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="invoices" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="70"/><column index="2" value="85"/><column index="3" value="129"/><column index="4" value="264"/><column index="5" value="132"/><column index="6" value="82"/><column index="7" value="98"/><column index="8" value="118"/><column index="9" value="42"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="leave_type" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="42"/><column index="2" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="leaves" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="42"/><column index="2" value="83"/><column index="3" value="81"/><column index="4" value="132"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="vacation_plan" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="63"/><column index="2" value="104"/><column index="3" value="86"/><column index="4" value="104"/><column index="5" value="115"/><column index="6" value="56"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="vacation_plan2" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="63"/><column index="2" value="86"/><column index="3" value="56"/><column index="4" value="115"/><column index="5" value="56"/><column index="6" value="45"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="yeni" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="42"/><column index="2" value="42"/><column index="3" value="57"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">DROP TABLE deneme;
+
+CREATE TABLE &quot;yeni&quot;(id INT, isim TEXT, soyisim TEXT);
+--eger yeni tablosu yoksa oluştur
+CREATE TABLE if NOT EXISTS &quot;yeni&quot;(id INT, isim TEXT, soyisim TEXT);
+
+CREATE TABLE &quot;leaves&quot;(id INT, employe_id INT, start_date DATE, end_date date);
+
+SELECT leaves.id, leaves.employe_id, employees.FirstName, leaves.start_date, leaves.end_date 
+FROM leaves INNER JOIN employees ON leaves.employe_id=employees.EmployeeId;
+
+CREATE TABLE &quot;vacation_plan&quot;(place_id INT, countryy TEXT, hotel_name TEXT,
+employe_id2 INT, vacation_length INT, budget int);
+
+ALTER TABLE yeni ADD numara INT;
+ALTER TABLE yeni ADD adres TEXT;
+--sütun silmek için
+ALTER TABLE yeni DROP COLUMN numara;
+ALTER TABLE yeni DROP numara;
+--sütun ismini değiştirmek için
+ALTER TABLE yeni RENAME COLUMN adres to sehir;
+
+ALTER TABLE yeni ADD adres TEXT;
+ALTER TABLE yeni DROP sehir;
+
+--eski sütunu yeni sütuna taşıma(data tipini değiştirmek için)
+ALTER TABLE yeni ADD COLUMN sehir text;
+UPDATE yeni SET sehir=adres;
+ALTER TABLE yeni DROP adres;
+
+ALTER TABLE vacation_plan ADD cityy TEXT;
+ALTER TABLE leaves ADD leave_type TEXT;
+
+ALTER TABLE leaves DROP leave_type;
+CREATE TABLE &quot;leave_type&quot;(id INT, leave_name TEXT); 
+
+DROP TABLE leaves;
+CREATE TABLE &quot;leaves&quot;(id INT PRIMARY KEY, emp_id INT, start_date date not NULL, end_date date NOT NULL, 
+leave_type_no INT, 
+ FOREIGN Key (emp_id) REFERENCES employees (EmployeeId),
+ FOREIGN Key (leave_type_no) REFERENCES leave_type (id)
+ );
+ 
+INSERT INTO leaves(id, emp_id, start_date, end_date, leave_type_no) VALUES(1, 4, &quot;2023-05-12&quot;, &quot;2023-05-25&quot;, 2);
+INSERT INTO leaves VALUES(2, 3, &quot;2023-05-14&quot;, &quot;2023-05-20&quot;, 3);
+INSERT INTO leaves VALUES(2, 3, &quot;2023-05-14&quot;, &quot;2023-05-20&quot;, 3);
+
+INSERT INTO employees (EmployeeId, FirstName, LastName, Title) VALUES( 9,&quot;Merve&quot;, &quot;Türk&quot;, &quot;IT Manager&quot;);
+
+UPDATE employees SET Title=&quot;General Manager&quot; WHERE EmployeeId=9;
+
+UPDATE leave_type set leave_name=&quot;Evlilik&quot; WHERE id=3;
+
+DELETE FROM leave_type WHERE id=1;
+
+DELETE FROM employees WHERE EmployeeId=9;
+
+DELETE FROM leaves;
+
+DROP TABLE vacation_plan;
+
+CREATE TABLE &quot;vacation_plan&quot;(place_id INT, countryy TEXT, hotel_name TEXT NOT NULL,
+employe_id2 INT, vacation_length INT, budget int,
+PRIMARY Key (place_id),
+FOREIGN KEY (employe_id2) REFERENCES employees(EmployeeId)
+);
+
+--employees tablosundaki EmployeeId 1 olan kişi için tatil planı giriniz
+INSERT INTO vacation_plan(place_id, countryy, hotel_name, employe_id2,vacation_length,budget) VALUES(
+1,&quot;Turkey&quot;,&quot;Hotel Vogue&quot;,1,20,3000);
+
+INSERT INTO vacation_plan 
+VALUES(2,&quot;Turkey&quot;,&quot;Hotel Vogue&quot;,3,20,3000);
+
+INSERT INTO vacation_plan 
+VALUES(3,&quot;Turkey&quot;,&quot;Hotel Vogue&quot;,5,20,3000), 
+(4,&quot;Spain&quot;,&quot;Mega&quot;, 2, 12, 2400);
+
+--Employees tablosunda bulunmayan bir kişi için (employeesID=9) olan kişi için bir tatil planı giriniz
+--çalışmaz
+
+/*join işlemi ile 2 tablodan veri çekelim, vacation_plan, employees*/
+SELECT e.FirstName as isim, LastName, vacation_length 
+FROM employees e
+JOIN vacation_plan v
+ON e.EmployeeId=v.employe_id2;
+
+ALTER TABLE vacation_plan 
+ADD name TEXT DEFAULT &quot;isimsiz&quot;;
+
+ALTER TABLE vacation_plan DROP COLUMN countryy;
+
+--employe_id2 yerine emp_id
+ALTER TABLE vacation_plan RENAME employe_id2 to emp_id; 
+
+ALTER TABLE vacation_plan RENAME to vacation_plan2;
+
+--employees tablosuna salary ekle
+ALTER TABLE employees 
+ADD salary INT;
+
+
+UPDATE employees SET salary=salary*1.1
+WHERE salary&gt;3000;
+
+UPDATE employees SET salary=salary*1.2
+WHERE salary&lt;=3000;
+
+UPDATE vacation_plan2 SET budget=0 
+where place_id=4;
+
+
+
+
+
+</sql><sql name="SQL 3">INSERT INTO vacation_plan VALUES(2,&quot;Turkey&quot;,&quot;Hotel Vogue&quot;,3,20,3000);</sql><current_tab id="0"/></tab_sql></sqlb_project>

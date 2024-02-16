@@ -1,0 +1,32 @@
+h1 {
+    color: chartreuse;
+    background-color: bisque;
+}
+body {
+    background-color: darkorange;
+}
+/*#test{
+    background-color: aqua;
+    color: blue;
+}*/
+
+.class1 {
+    background-color: darkgreen;
+}
+.box-model {
+    border: 30px solid rgb(106, 49, 181);
+    border-radius: 10px;
+    padding: 80px;
+    width: 800px;
+    box-sizing: border-box;
+    margin: auto;
+    font-size: 30px ;
+    text-align: right;
+    background-color: aqua;
+   
+    /* border-width: 1px 10px 20px 30px;*/
+}
+
+#mar {
+    margin: auto;
+}
